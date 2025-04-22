@@ -72,25 +72,25 @@ spec:
           workspace: workspace
   - name: git-update-deployment
     params:
-    - name: GIT_REPOSITORY
-      value: $(params.CONFIG_GIT_REPO)
-    - name: CURRENT_IMAGE
-      value: $(params.IMAGE_NAME)
-    - name: NEW_IMAGE
-      value: $(params.IMAGE_NAME)
-    - name: NEW_DIGEST
-      value: $(tasks.build-and-push.results.IMAGE_DIGEST)
-    - name: KUSTOMIZATION_PATH
-      value: environments/dev
-    - name: GIT_REF
-      value: $(params.CONFIG_GIT_REVISION)
+      - name: GIT_REPOSITORY
+        value: $(params.CONFIG_GIT_REPO)
+      - name: CURRENT_IMAGE
+        value: $(params.IMAGE_NAME)
+      - name: NEW_IMAGE
+        value: $(params.IMAGE_NAME)
+      - name: NEW_DIGEST
+        value: $(tasks.build-and-push.results.IMAGE_DIGEST)
+      - name: KUSTOMIZATION_PATH
+        value: environments/dev
+      - name: GIT_REF
+        value: $(params.CONFIG_GIT_REVISION)
     runAfter:
       - build-and-push
     taskRef:
       kind: Task
       name: git-update-deployment
     workspaces:
-    - name: workspace
-      workspace: workspace 
-  workspaces:
+      - name: workspace
+        workspace: workspace 
+workspaces:
   - name: workspace
