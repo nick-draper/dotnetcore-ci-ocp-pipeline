@@ -148,6 +148,7 @@ oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=-
 ```
 You can also login with OpenShift authentication.
 Once you login, you can see your application deployed by ArgoCD
+
  ![image](https://github.com/user-attachments/assets/9c037091-3aaa-4b6a-8e62-71b4faf6258b)
 
  ![image](https://github.com/user-attachments/assets/8edc4e83-a409-47a3-8bb2-6e7890bb0db8)
