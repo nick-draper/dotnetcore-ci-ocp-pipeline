@@ -1,6 +1,7 @@
 # Creating end to end GitOps pipeline on Red Hat OpenShift using ArgoCD and Tekton
  ![image](https://github.com/user-attachments/assets/fd36dd40-0314-483a-90e7-f7801ad3d6b3)
 
+
 ## What is Tekton?
 In the realm of cloud-native development, Continuous Integration and Continuous Delivery (CI/CD) have become critical components for building, testing, and deploying applications seamlessly. With the rise of Kubernetes and containerization, developers need efficient tools to manage their CI/CD pipelines effectively. Enter Tekton, a powerful open-source framework designed specifically for cloud-native CI/CD workflows.
 Tekton is a Kubernetes-native framework that focuses on providing a declarative and extensible approach to building CI/CD systems. Born as an open-source project under the umbrella of the Continuous Delivery Foundation (CDF), Tekton leverages the Kubernetes API and utilizes custom resource definitions (CRDs) to define pipeline resources, tasks, and workspaces. It brings the advantages of scalability, portability, and reproducibility to your CI/CD workflows, making it an excellent choice for cloud-native environments.
