@@ -7,19 +7,19 @@ spec:
   - default: pipelines-dotnetcore-api
     name: APP_NAME
     type: string
-  - default: https://github.com/ericbos111/dotnetcore-ci-ocp-pipeline.git
+  - default: https://github.com/nick-draper/dotnetcore-ci-ocp-pipeline.git
     name: GIT_REPO
     type: string
   - default: master
     name: GIT_REVISION
     type: string
-  - default: quay.io/ericbos1/dotnetcore
+  - default: quay.io/nick-draper/dotnetcore
     name: IMAGE_NAME
     type: string
   - default: .
     name: PATH_CONTEXT
     type: string
-  - default: 'https://github.com/ericbos111/dotnetcore-gitops.git'
+  - default: 'https://github.com/nick-draper/dotnetcore-gitops.git'
     name: CONFIG_GIT_REPO
     type: string
   - default: develop
@@ -70,27 +70,27 @@ spec:
       workspaces:
         - name: source
           workspace: workspace
-  - name: git-update-deployment
-    params:
-      - name: GIT_REPOSITORY
-        value: $(params.CONFIG_GIT_REPO)
-      - name: CURRENT_IMAGE
-        value: $(params.IMAGE_NAME)
-      - name: NEW_IMAGE
-        value: $(params.IMAGE_NAME)
-      - name: NEW_DIGEST
-        value: $(tasks.build-and-push.results.IMAGE_DIGEST)
-      - name: KUSTOMIZATION_PATH
-        value: environments/dev
-      - name: GIT_REF
-        value: $(params.CONFIG_GIT_REVISION)
-    runAfter:
-      - build-and-push
-    taskRef:
-      kind: Task
-      name: git-update-deployment
-    workspaces:
-      - name: workspace
-        workspace: workspace 
-workspaces:
-  - name: workspace
+    - name: git-update-deployment
+      params:
+        - name: GIT_REPOSITORY
+          value: $(params.CONFIG_GIT_REPO)
+        - name: CURRENT_IMAGE
+          value: $(params.IMAGE_NAME)
+        - name: NEW_IMAGE
+          value: $(params.IMAGE_NAME)
+        - name: NEW_DIGEST
+          value: $(tasks.build-and-push.results.IMAGE_DIGEST)
+        - name: KUSTOMIZATION_PATH
+          value: environments/dev
+        - name: GIT_REF
+          value: $(params.CONFIG_GIT_REVISION)
+      runAfter:
+        - build-and-push
+      taskRef:
+        kind: Task
+        name: git-update-deployment
+      workspaces:
+        - name: workspace
+          workspace: workspace 
+  workspaces:
+    - name: workspace
